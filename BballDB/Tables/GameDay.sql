@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[GameDay]
+(
+	[GameNo] INT IDENTITY(1,1) NOT NULL,
+	[Date] NVARCHAR(15) NOT NULL,
+	[Time] NVARCHAR(15) NOT NULL,
+	[Venue] NVARCHAR(50) NULL,
+	[PaidBy] NVARCHAR(10) NULL,
+	[PaidAmount] MONEY NULL,
+	[PassedGame] INT NULL,
+	CONSTRAINT PK_GameDate PRIMARY KEY (GameNo),
+	CONSTRAINT FK_GameDate_Member FOREIGN KEY (PaidBy) REFERENCES Player(ID)
+)

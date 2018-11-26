@@ -1,0 +1,54 @@
+﻿@model BBallTeamApp.Models.GamePlayerViewModel
+
+@{
+    ViewBag.Title = "TeamPayments";
+}
+
+<h2>TeamPayments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            FirstName
+            @*@Html.DisplayNameFor(model => model.Member.FirstName)*@
+        </th>
+        <th>
+            LastName
+            @*@Html.DisplayNameFor(model => model.Member.LastName)*@
+        </th>
+        <th>Totals
+        </th>
+        <th></th>
+    </tr>
+    @for (int m = 0; m < Model.Players.Count; m++)
+    {
+        float totalAmount = 0;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Players[m].FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Players[m].LastName)
+            </td>
+            @for (int c = 0; c < Model.GameDays.Count; c++)
+            {
+                if (Model.GameDays[c].Player.ID == Model.Players[m].ID)
+                {
+                    totalAmount += float.Parse(Model.GameDays[c].PaidAmount.ToString());
+                }
+            }
+            <td>
+                $@Html.DisplayFor(amount => totalAmount)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CoffeeDateNo }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CoffeeDateNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CoffeeDateNo })
+                </td>*@
+        </tr>
+    }
+
+</table>

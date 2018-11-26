@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BBallTeamApp.Models.GameDay>
+
+@{
+    ViewBag.Title = "GamesHistory";
+}
+
+<h2>GamesHistory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidAmount)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.PassedGame)
+            </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.Player.FirstName)*@
+            PaidBy
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidAmount)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PassedGame)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Player.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GameNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.GameNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.GameNo })
+            </td>
+        </tr>
+    }
+
+</table>

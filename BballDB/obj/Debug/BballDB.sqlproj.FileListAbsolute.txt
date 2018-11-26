@@ -1,0 +1,10 @@
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\bin\Debug\BballDB.dacpac
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\bin\Debug\BballDB.dll
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\bin\Debug\BballDB.pdb
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\BballDB.sqlprojAssemblyReference.cache
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\BballDB.dll
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\BballDB.pdb
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\Model.xml
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\refactor.xml
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\postdeploy.sql
+C:\Users\ishmyles\Desktop\FinalChallenge\BballDB\obj\Debug\predeploy.sql
