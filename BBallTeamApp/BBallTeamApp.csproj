@@ -334,6 +334,7 @@
     <Content Include="Views\GameDays\UpcomingGames.cshtml" />
     <Content Include="Views\GameDays\GamesHistory.cshtml" />
     <Content Include="Views\GameDays\TeamPayments.cshtml" />
+    <Content Include="Views\Players\PlayerRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

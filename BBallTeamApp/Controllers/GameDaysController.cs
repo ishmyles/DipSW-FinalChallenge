@@ -20,14 +20,15 @@ namespace BBallTeamApp.Controllers
         GamePlayerViewModel gamePlayer = new GamePlayerViewModel();
 
         // GET: GameDays
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var currentUser = manage.FindById(User.Identity.GetUserId());
-            ViewBag.Authorised = currentUser.Approved;
-
-            var gameDays = db.GameDays.Include(g => g.Player);
-            return View(await gameDays.ToListAsync());
+            //var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //var currentUser = manage.FindById(User.Identity.GetUserId());
+            //ViewBag.Authorised = currentUser.Approved;
+            //var gameDays = db.GameDays.Include(g => g.Player);
+            gamePlayer.Players = db.Players.ToList();
+            gamePlayer.GameDays = db.GameDays.Include(g => g.Player).ToList();
+            return View(gamePlayer);
         }
 
         // Get: UpcomingGames

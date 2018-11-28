@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BBallTeamApp.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BBallTeamApp.Controllers
 {
@@ -19,6 +21,12 @@ namespace BBallTeamApp.Controllers
         public async Task<ActionResult> Index()
         {
             return View(await db.Players.ToListAsync());
+        }
+
+        // GET: PlayerRequests
+        public async Task<ActionResult> PlayerRequests()
+        {
+            return View(await db.Players.Where(p => p.PendingApproval == 1 || p.PendingApproval == null).ToListAsync());
         }
 
         // GET: Players/Details/5
@@ -85,6 +93,7 @@ namespace BBallTeamApp.Controllers
             {
                 db.Entry(player).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
             return View(player);

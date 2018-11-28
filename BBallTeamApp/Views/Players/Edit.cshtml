@@ -36,8 +36,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PendingApproval, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PendingApproval, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PendingApproval, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.PendingApproval, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PendingApproval, "", new { @class = "text-danger" })*@
+
+                @Html.RadioButtonFor(model => model.PendingApproval, 0)
+                <span>Approved</span>
+
+                @Html.RadioButtonFor(model => model.PendingApproval, 2)
+                <span>Rejected</span>
+                @*@Html.RadioButtonFor(m => Model.PendingApproval, 0, new {
+        htmlAttributes = new { @class = "form-control", @text = "Approved"} })
+                        @Html.RadioButtonFor(m => Model.PendingApproval, 1)*@
+
+                @*<select class="form-control">
+            <option value="">Approved</option>
+            <option value="">Denied</option>
+        </select>*@
             </div>
         </div>
 

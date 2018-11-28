@@ -1,70 +1,84 @@
-﻿@model IEnumerable<BBallTeamApp.Models.GameDay>
+﻿@model BBallTeamApp.Models.GamePlayerViewModel
 @using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
+    string userID = User.Identity.Name;
+    bool approvedUser = true;
+    foreach (var user in Model.Players.Where(p => p.PendingApproval == 1))
+    {
+        if (userID == user.FirstName)
+        {
+            approvedUser = false;
+            break;
+        }
+    }
 }
 
 <h2>Index</h2>
-@if (ViewBag.Authorised)
+@if (approvedUser)
 {
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Venue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaidAmount)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.PassedGame)
-        </th>*@
-        <th>
-            PaidBy
-            @*@Html.DisplayNameFor(model => model.Player.FirstName)*@
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Date)*@
+                Date
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Time)*@
+                Time
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Venue)*@
+                Venue
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.PaidAmount)*@
+                PaidAmount
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.PassedGame)
+                </th>*@
+            <th>
+                PaidBy
+                @*@Html.DisplayNameFor(model => model.Player.FirstName)*@
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Venue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidAmount)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PassedGame)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Player.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.GameNo }) |
-            @Html.ActionLink("Details", "Details", new { id = item.GameNo }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.GameNo })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model.GameDays)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaidAmount)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PassedGame)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GameNo }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.GameNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GameNo })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
 }
 else
 {

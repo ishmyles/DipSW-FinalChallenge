@@ -60,8 +60,8 @@ namespace BBallTeamApp
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "clientID :)",
-                ClientSecret = "secret :D"
+                ClientId = "465717269553-c2vab34c1mfsh8o4tlpp70t4uukeh1jv.apps.googleusercontent.com",
+                ClientSecret = "w0T0pdUjS-2kQToIrazYabtk"
             });
         }
     }
